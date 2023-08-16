@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gleam Jewelry</title>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <!-- Bootstrap CSS & JS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/index.js"></script>
+    <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
+    <!--fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- css -->
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+
+    <!--Script for Font awesome icons-->
+    <script
+      src="https://kit.fontawesome.com/149ae3bfe5.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <!-- logged in state -->
+        <% if (user) { %>
+        <div class="logged-in-header">
+          <div class="logged-in-header--element-a">
+            <div class="dropdown">
+              <a href="" class="header-icon"
+                ><iconify-icon
+                  icon="mdi:hamburger-menu"
+                  width="36"
+                  height="36"
+                ></iconify-icon
+              ></a>
+              <div class="dropdown-content">
+                <a href="#">Favorites</a>
+                <a href="/cart">View Cart</a>
+                <a href="#">My Order</a>
+                <a href="#">Track Order</a>
+                <a href="#">Make a Return</a>
+              </div>
+            </div>
+            <a href="/" class="logo"
+              ><h2><span>G</span>LEAM JEWELRY</h2></a
+            >
+          </div>
+          <div class="logged-in-header--element-b">
+            <p class="text-capitalize" id="welcome_user">
+              Hello <%= user.first_name %>
+            </p>
+
+            <select name="header-icon" id="currency">
+              <option
+                value="cad"
+                selected="selected"
+                data-img_src="https://flagcdn.com/36x36/ca.png"
+              >
+                🇨🇦&emsp;CAD
+              </option>
+              <option
+                value="usd"
+                data-img_src="https://flagcdn.com/36x36/us.png"
+              >
+                🇺🇸&emsp;USD
+              </option>
+            </select>
+            <!-- <a href="/logout" id="logout">Logout</a> -->
+            <form method="POST" action="/logout">
+              <input type="submit" value="Logout" id="logout" />
+            </form>
+          </div>
+        </div>
+
+        <% } else { %>
+        <!-- logged out state -->
+
+        <div>
+          <a href="/" class="logo"
+            ><h2><span>G</span>LEAM JEWELRY</h2></a
+          >
+        </div>
+
+        <div>
+          <a href="" class="header-icon"
+            ><iconify-icon
+              icon="iconamoon:search-light"
+              width="36"
+              height="36"
+            ></iconify-icon
+          ></a>
+
+          <div class="dropdown">
+            <a href="#" class="header-icon"
+              ><iconify-icon
+                icon="clarity:avatar-line"
+                width="36"
+                height="36"
+              ></iconify-icon
+            ></a>
+            <div class="dropdown-content">
+              <a href="/signin" id="signin">Sign In</a>
+              <a href="/signup" id="signup">Create an account</a>
+            </div>
+          </div>
+
+          <a href="/cart" class="header-icon"
+            ><iconify-icon
+              icon="mdi:cart-outline"
+              width="36"
+              height="36"
+            ></iconify-icon
+          ></a>
+
+          <select name="header-icon" id="currency">
+            <option
+              value="cad"
+              selected="selected"
+              data-img_src="https://flagcdn.com/36x36/ca.png"
+            >
+              <span>🇨🇦&emsp;</span>CAD
+            </option>
+            <option value="usd" data-img_src="https://flagcdn.com/36x36/us.png">
+              🇺🇸&emsp;USD
+            </option>
+          </select>
+        </div>
+        <% } %>
+      </nav>
+    </header>
+
+    <!-- JS script -->
+
+    <script src="./js/header.js"></script>
+  </body>
+</html>
